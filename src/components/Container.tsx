@@ -1,6 +1,5 @@
 import '../styles/button.css';
 import '../styles/container.css';
-import React from 'react';
 import Button from './Button';
 import Display from './Display';
 

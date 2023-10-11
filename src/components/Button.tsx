@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = {
     label: string;
     purpose?: string;
@@ -8,7 +6,7 @@ type Props = {
 const Button = ({ label, purpose = 'number' }: Props) => {
     return (
         <>
-            <button className="btn btn-primary" label={label}>
+            <button className="btn btn-primary" label={label} purpose={purpose}>
                 {label}
             </button>
         </>
