@@ -18,15 +18,15 @@
     transition: border-color 0.25s;
 }
 
-.btn[label='0'] {
+.btn[data-label='0'] {
     width: 8.2em;
 }
 
-.btn[label='='] {
+.btn[data-label='='] {
     background-color: #c47a53;
 }
 
-.btn[label='C'] {
+.btn[data-label='C'] {
     color: #bf0000;
 }
 

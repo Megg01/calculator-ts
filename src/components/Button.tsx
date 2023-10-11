@@ -6,7 +6,11 @@ interface Props {
 const Button = ({ label, purpose = 'number' }: Props) => {
     return (
         <>
-            <button className="btn btn-primary" label={label} purpose={purpose}>
+            <button
+                className="btn btn-primary"
+                data-label={label}
+                data-purpose={purpose}
+            >
                 {label}
             </button>
         </>
