@@ -1,4 +1,4 @@
-type Props = {
+interface Props = {
     label: string;
     purpose?: string;
 };
