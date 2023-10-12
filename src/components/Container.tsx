@@ -7,21 +7,29 @@ import Screen from './Screen';
 const Container = () => {
     const [equation, setEquation] = useState('');
     const [value, setValue] = useState('0');
-    const [operator, setOperator] = useState('');
     const [last, setLast] = useState('');
+    const [plusMinus, setPlusMinus] = useState('');
 
     const numHandler = (e: React.MouseEvent) => {
         e.preventDefault();
 
-        let val: string = value + (e.target as HTMLButtonElement)?.value;
+        const twoMoreVal: string =
+            value + (e.target as HTMLButtonElement)?.value;
+        const oneVal: string = (e.target as HTMLButtonElement)?.value;
 
-        if (value !== '0') {
-            setValue(val);
+        if (value === '0') {
+            setValue(oneVal);
         } else {
-            setValue((e.target as HTMLButtonElement)?.value);
+            setValue(twoMoreVal);
         }
 
-        equation !== '' ? setEquation(equation + ' ' + val) : val = '0';
+        if (last === 'operator') {
+            setEquation(equation + ' ' + oneVal);
+        } else if (equation !== '' && last === 'number') {
+            setEquation(equation + oneVal);
+        } if (equation !== '' && last === '.') {
+            setEquation(equation + '.' + oneVal);
+        }
 
         setLast('number');
     };
@@ -29,13 +37,13 @@ const Container = () => {
     const opHandler = (e: React.MouseEvent) => {
         e.preventDefault();
 
-        setOperator((e.target as HTMLButtonElement)?.value || '');
-
-        console.log(operator);
+        const clickedOp = (e.target as HTMLButtonElement)?.value;
 
         equation === ''
-            ? setEquation(value + ' ' + operator)
-            : setEquation(equation + ' ' + operator + ' ' + value);
+            ? setEquation(value + ' ' + clickedOp)
+            : setEquation(equation + ' ' + clickedOp + ' ');
+
+        setValue('0');
 
         setLast('operator');
     };
@@ -45,20 +53,38 @@ const Container = () => {
 
         setValue('0');
         setEquation('');
-        setLast('');
     };
 
     const pointHandler = (e: React.MouseEvent) => {
         e.preventDefault();
 
         setValue(value + '.');
+        setLast('.');
     };
 
     const eqHandler = (e: React.MouseEvent) => {
         e.preventDefault();
 
-        setValue(eval(equation));
+        if (equation !== '') {
+            setValue(eval(equation));
+        } else {
+            setValue('0');
+        }
+
         setLast('=');
+    };
+
+    const plusMinusHandler = (e: React.MouseEvent) => {
+        e.preventDefault();
+
+        if (plusMinus === '' && value !== '0') {
+            setValue('-' + value);
+            setPlusMinus('-');
+        }
+        if (plusMinus === '-') {
+            setValue(value.slice(1, value.length));
+            setPlusMinus('');
+        }
     };
 
     return (
@@ -73,7 +99,7 @@ const Container = () => {
                 <Button
                     label="+/-"
                     purpose="operator"
-                    onClick={opHandler}
+                    onClick={plusMinusHandler}
                 ></Button>
                 <Button
                     label="%"

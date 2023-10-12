@@ -13,7 +13,7 @@
 
     text-align: center;
 
-    background-color: #1a1a1a;
+    background-color: var(--button-back-color);
     cursor: pointer;
     transition: border-color 0.25s;
 }
@@ -31,7 +31,7 @@
 }
 
 .btn:hover {
-    border-color: #646cff;
+    border-color: var(--button-hover-color);
 }
 .btn:focus,
 .btn:focus-visible {

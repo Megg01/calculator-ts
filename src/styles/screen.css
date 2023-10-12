@@ -8,8 +8,9 @@
 #equation {
     font-size: 1em;
     color: var(--equation-color);
-  padding: 0.2em 0.4em;
-  }
+    padding: 0.2em 0.4em;
+    height: 1em;
+}
 
 #value {
     font-size: 2em;
