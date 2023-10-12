@@ -1,0 +1,17 @@
+#equation,
+#value {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+#equation {
+    font-size: 1em;
+    color: var(--equation-color);
+  padding: 0.2em 0.4em;
+  }
+
+#value {
+    font-size: 2em;
+    padding: 0.2em;
+}
